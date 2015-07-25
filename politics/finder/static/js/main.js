@@ -6,17 +6,18 @@ $('input#submit').click(function() {
         templateSource = $("#simple-template").html(),
         template = Handlebars.compile(templateSource);
 
-    $.ajax({
-        async: true,
-        url: apiUrl,
-        dataType: 'jsonp',
-        async: false,
-        success: function ( response ) {
-            data = response.results;
-            console.log( data );
-            console.log(templateSource);
-            console.log(template(data));
-            $("#main").html(template({data: data}));
-        }
-    })
+    if (entry.length !== 5) {
+        // Add an error message, change the form class to represent the error
+    } else {
+        $.ajax({
+            async: true,
+            url: apiUrl,
+            dataType: 'jsonp',
+            async: false,
+            success: function ( response ) {
+                data = response.results;
+                $("#main").html(template({data: data}));
+            }
+        })
+    }
 });

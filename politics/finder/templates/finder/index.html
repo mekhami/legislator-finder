@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block extrahead %}
+<script src="{% static 'js/main.js' %}"></script>
 {% endblock %}
 
 {% block jumbo %}
@@ -16,7 +17,6 @@
 {% endblock %}
 
 {% block footerjs %}
-<script src="{% static 'js/main.js' %}"></script>
 {% verbatim %}
 <script id="simple-template" type="text/x-handlebars-template">
     {{#each data}}
