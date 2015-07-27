@@ -22,6 +22,7 @@
     "tests"
   ],
   "devDependencies": {
-    "materialize": "~0.97.0"
+    "materialize": "~0.97.0",
+    "handlebars": "~3.0.3"
   }
 }

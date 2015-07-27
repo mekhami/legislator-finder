@@ -31,6 +31,11 @@ gulp.task('vendor', function() {
         .pipe(notify({ message: 'Vendor task complete' }));
     });
 
+gulp.task('handlebars', function() {
+    return gulp.src('bower_components/handlebars/handlebars.min.js')
+        .pipe(gulp.dest('politics/src/assets/js'))
+});
+
 gulp.task('scripts', function() {
    return gulp.src('politics/*/static/**/*.js')
         .pipe(jshint('.jshintrc'))
