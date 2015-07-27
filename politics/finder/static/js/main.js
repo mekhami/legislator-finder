@@ -6,18 +6,13 @@ $('input#submit').click(function() {
         templateSource = $("#simple-template").html(),
         template = Handlebars.compile(templateSource);
 
-    if (entry.length !== 5) {
-        // Add an error message, change the form class to represent the error
-    } else {
-        $.ajax({
-            async: true,
-            url: apiUrl,
-            dataType: 'jsonp',
-            async: false,
-            success: function ( response ) {
-                data = response.results;
-                $("#main").html(template({data: data}));
-            }
-        })
-    }
+    $.ajax({
+        async: true,
+        url: apiUrl,
+        dataType: 'jsonp',
+        success: function ( response ) {
+            var data = response.results;
+            $("#main").html(template({data: data}));
+        }
+    })
 });
