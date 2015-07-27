@@ -60,7 +60,7 @@ gulp.task('clean', function(cb) {
     });
 
 gulp.task('default', ['clean'], function() {
-    gulp.start('styles', 'scripts', 'images');
+    gulp.start('styles', 'scripts', 'images', 'vendor', 'handlebars');
     });
 
 gulp.task('watch', function() {
