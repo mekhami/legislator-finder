@@ -22,18 +22,9 @@ gulp.task('styles', function() {
         .pipe(notify({ message: 'Styles task complete' }));
     });
 
-gulp.task('vendor', function() {
-    return sass('bower_components/materialize/sass/materialize.scss', { style: 'expanded' })
-        .pipe(gulp.dest('politics/src/assets/css'))
-        .pipe(rename({suffix: '.min'}))
-        .pipe(minifycss())
-        .pipe(gulp.dest('politics/src/assets/css'))
-        .pipe(notify({ message: 'Vendor task complete' }));
-    });
-
-gulp.task('handlebars', function() {
-    return gulp.src('bower_components/handlebars/handlebars.min.js')
-        .pipe(gulp.dest('politics/src/assets/js'))
+gulp.task('bootstrap', function() {
+    return gulp.src('bower_components/bootstrap/dist/*')
+        .pipe(gulp.dest('static/'))
 });
 
 gulp.task('scripts', function() {
