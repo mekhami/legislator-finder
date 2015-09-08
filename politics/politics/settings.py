@@ -18,8 +18,8 @@ PROJECT_DIR = os.path.dirname(__file__)
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
-SUNLIGHT_API = os.environ.get('SUNLIGHT_API_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'qwqweqewrqwerqwer')
+SUNLIGHT_API = os.environ.get('SUNLIGHT_API_KEY', '6b879d65c49742058a88a0b955b3f172')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

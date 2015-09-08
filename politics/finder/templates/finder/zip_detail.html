@@ -1,0 +1,8 @@
+{% extends 'finder/base.html' %}
+{% block content %}
+{% for leg in legislators %}
+{{ leg.chamber }} - {{ leg.party }}
+{{ leg.first_name }} {{ leg.last_name }}
+{{ leg.birthday }}
+{% endfor %}
+{% endblock %}
