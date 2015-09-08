@@ -1,2 +1,6 @@
+args==0.1.0
+clint==0.5.1
 Django==1.8.2
+requests==2.7.0
 selenium==2.46.0
+sunlight==1.2.9

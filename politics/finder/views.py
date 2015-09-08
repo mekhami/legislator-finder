@@ -1,25 +1,18 @@
-from django.shortcuts import render
-from django.views.generic.edit import FormView
-from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect
+from django.views.generic import View
 
 from .forms import FinderForm
+from .api import query_api
 
 # Create your views here.
-class IndexView(FormView):
-    form_class = FinderForm
+class IndexView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'finder/index.html')
 
-    def form_valid(self, form):
-        # perform the API request
-        legislators = form.query_api()
-        pass
+    def post(self, request, *args, **kwargs):
+        return redirect('zip-detail', zipcode=request.POST['zipcode'])
 
-def index_view(request):
-    return render(request, 'finder/index.html')
-
-def zipcode_view(request):
-    if request.method == "POST":
-        # perform the API request, create the context object from the representatives
-        # context = ?
-        return render(request, 'finder/results.html', context)
-    else:
-        return HttpResponseRedirect('/')
+class ZipCodeView(View):
+    def get(self, request, *args, **kwargs):
+        legislators = query_api(kwargs['zipcode'])
+        return render(request, 'finder/zip_detail.html', {'legislators': legislators})
