@@ -5,3 +5,4 @@ node_modules/*
 politics/src/*
 .sass-cache
 .env
+static/
