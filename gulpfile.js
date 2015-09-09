@@ -15,15 +15,17 @@ var gulp = require('gulp'),
 gulp.task('styles', function() {
     return sass('politics/finder/static/scss/main.scss', { style: 'expanded' })
         .pipe(autoprefixer('last 2 version'))
-        .pipe(gulp.dest('politics/src/assets/css'))
+        .pipe(gulp.dest('static/css'))
         .pipe(rename({suffix: '.min'}))
         .pipe(minifycss())
-        .pipe(gulp.dest('politics/src/assets/css'))
+        .pipe(gulp.dest('static/css'))
         .pipe(notify({ message: 'Styles task complete' }));
     });
 
 gulp.task('bootstrap', function() {
-    return gulp.src('bower_components/bootstrap/dist/*')
+    gulp.src('bower_components/jquery/dist/jquery.min.js')
+        .pipe(gulp.dest('static/js'))
+    return gulp.src('bower_components/bootstrap/dist/**/*')
         .pipe(gulp.dest('static/'))
 });
 
@@ -32,10 +34,10 @@ gulp.task('scripts', function() {
         .pipe(jshint('.jshintrc'))
         .pipe(jshint.reporter('default'))
         .pipe(concat('main.js'))
-        .pipe(gulp.dest('politics/src/assets/js'))
+        .pipe(gulp.dest('static/js'))
         .pipe(rename({suffix: '.min'}))
         .pipe(uglify())
-        .pipe(gulp.dest('politics/src/assets/js'))
+        .pipe(gulp.dest('static/js'))
         .pipe(notify({ message: 'Scripts task complete' }));
     });
 
@@ -47,11 +49,11 @@ gulp.task('images', function() {
     });
 
 gulp.task('clean', function(cb) {
-    del(['politics/src/assets/css', 'politics/src/assets/js', 'politics/src/assets/images'], cb)
+    del(['static/css', 'static/js', 'politics/src/assets/images'], cb)
     });
 
 gulp.task('default', ['clean'], function() {
-    gulp.start('styles', 'scripts', 'images', 'vendor', 'handlebars');
+    gulp.start('styles', 'scripts', 'images', 'bootstrap');
     });
 
 gulp.task('watch', function() {

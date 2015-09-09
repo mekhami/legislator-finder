@@ -1,8 +1,12 @@
 {% extends 'finder/base.html' %}
 {% block content %}
 {% for leg in legislators %}
-{{ leg.chamber }} - {{ leg.party }}
-{{ leg.first_name }} {{ leg.last_name }}
-{{ leg.birthday }}
+
+<div class="row senator-card">
+    <p class="text-center">{{ leg.chamber }} - {{ leg.party }}</p>
+    <p class="text-center">{{ leg.first_name }} {{ leg.last_name }}</p>
+    <p class="text-center">{{ leg.birthday }}</p>
+</div>
+
 {% endfor %}
 {% endblock %}
