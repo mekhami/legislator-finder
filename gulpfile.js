@@ -12,39 +12,41 @@ var gulp = require('gulp'),
     livereload = require('gulp-livereload'),
     del = require('del');
 
+var config = {
+    src_dir: 'politics/src'
+}
+
 gulp.task('styles', function() {
     return sass('politics/finder/static/scss/main.scss', { style: 'expanded' })
         .pipe(autoprefixer('last 2 version'))
-        .pipe(gulp.dest('static/css'))
+        .pipe(gulp.dest(config.src_dir + '/css'))
         .pipe(rename({suffix: '.min'}))
         .pipe(minifycss())
-        .pipe(gulp.dest('static/css'))
+        .pipe(gulp.dest(config.src_dir + '/css'))
         .pipe(notify({ message: 'Styles task complete' }));
     });
 
 gulp.task('bootstrap', function() {
     gulp.src('bower_components/jquery/dist/jquery.min.js')
-        .pipe(gulp.dest('static/js'))
+        .pipe(gulp.dest(config.src_dir + '/js'))
     return gulp.src('bower_components/bootstrap/dist/**/*')
-        .pipe(gulp.dest('static/'))
+        .pipe(gulp.dest(config.src_dir))
 });
 
 gulp.task('scripts', function() {
    return gulp.src('politics/*/static/**/*.js')
-        .pipe(jshint('.jshintrc'))
-        .pipe(jshint.reporter('default'))
         .pipe(concat('main.js'))
-        .pipe(gulp.dest('static/js'))
+        .pipe(gulp.dest(config.src_dir + '/js'))
         .pipe(rename({suffix: '.min'}))
         .pipe(uglify())
-        .pipe(gulp.dest('static/js'))
+        .pipe(gulp.dest(config.src_dir + '/js'))
         .pipe(notify({ message: 'Scripts task complete' }));
     });
 
 gulp.task('images', function() {
     return gulp.src('politics/*/static/images/*')
         .pipe(cache(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
-        .pipe(gulp.dest('politics/src/assets/images'))
+        .pipe(gulp.dest(config.src_dir + 'assets/images'))
         .pipe(notify({ message: 'Images task complete' }));
     });
 
