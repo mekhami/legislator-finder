@@ -8,10 +8,17 @@
             <img class="img-rounded img-responsive center-block" src="{{ leg.image_url }}" />
         </div>
         <div class="col-md-8 col-sm-12">
-            <p class="text-center">{{ leg.first_name }} {{ leg.last_name }}</p>
-            <p class="text-center">{{ leg.chamber|capfirst }} - {{ leg.party|full_party }}</p>
-            <p class="text-center">{{ leg.birthday }}</p>
-            <p class="text-center"><a href="http://www.twitter.com/{{ leg.twitter_id }}">{{ leg.twitter_id }}</a></p>
+            <h1>{{ leg.first_name }} {{ leg.last_name }}</h1>
+            <p>{{ leg.chamber|capfirst }} {{ leg.party|full_party }}</p>
+            <p>DOB: {{ leg.birthday }}</p>
+            <p>Twitter: <a href="http://www.twitter.com/{{ leg.twitter_id }}">{{ leg.twitter_id }}</a></p>
+            <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Votes</a>
+            <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Committees</a>
+            <div class="collapse" id="collapseExample">
+              <div class="well">
+                {% lorem %}  
+              </div>
+            </div>
         </div>
     </div>
 {% endfor %}
