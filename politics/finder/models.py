@@ -6,7 +6,8 @@ class Legislator(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     twitter_id = models.CharField(max_length=25, null=True)
-    image_url = models.URLField(max_length=200)
+    congress_image_url = models.URLField(max_length=200)
+    twitter_image_url = models.URLField(max_length=200)
 
     def __str__(self):
         return "{} {}".format(self.first_name, self.last_name)
