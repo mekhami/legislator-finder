@@ -5,7 +5,7 @@
 
 <div class="row legislator-card">
     <div class="col-md-4 col-sm-12 legi-picture">
-        <p class="text-center">Picture Goes Here</p>
+        <img class="img-thumbnail img-responsive" src="{{ leg.image_url }}" />
     </div>
     <div class="col-md-8 col-sm-12">
         <p class="text-center">{{ leg.chamber|capfirst }} - {{ leg.party|full_party }}</p>

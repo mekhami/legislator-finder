@@ -3,6 +3,7 @@ from django.views.generic import View
 
 from .forms import ZipForm
 from .api import query_api
+from .models import Legislator
 
 # Create your views here.
 class IndexView(View):
@@ -16,4 +17,7 @@ class IndexView(View):
 class ZipCodeView(View):
     def get(self, request, *args, **kwargs):
         legislators = query_api(kwargs['zipcode'])
+        for leg in legislators:
+            db_leg = Legislator.objects.get(bioguide_id=leg['bioguide_id'])
+            leg['image_url'] = db_leg.image_url
         return render(request, 'finder/zip_detail.html', {'legislators': legislators})
