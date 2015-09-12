@@ -1,11 +1,17 @@
 {% extends 'finder/base.html' %}
+{% load leg_filters %}
 {% block content %}
 {% for leg in legislators %}
 
-<div class="row senator-card">
-    <p class="text-center">{{ leg.chamber }} - {{ leg.party }}</p>
-    <p class="text-center">{{ leg.first_name }} {{ leg.last_name }}</p>
-    <p class="text-center">{{ leg.birthday }}</p>
+<div class="row legislator-card">
+    <div class="col-md-4 col-sm-12 legi-picture">
+        <p class="text-center">Picture Goes Here</p>
+    </div>
+    <div class="col-md-8 col-sm-12">
+        <p class="text-center">{{ leg.chamber|capfirst }} - {{ leg.party|full_party }}</p>
+        <p class="text-center">{{ leg.first_name }} {{ leg.last_name }}</p>
+        <p class="text-center">{{ leg.birthday }}</p>
+    </div>
 </div>
 
 {% endfor %}
