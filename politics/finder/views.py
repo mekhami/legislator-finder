@@ -19,5 +19,5 @@ class ZipCodeView(View):
         legislators = query_api(kwargs['zipcode'])
         for leg in legislators:
             db_leg = Legislator.objects.get(bioguide_id=leg['bioguide_id'])
-            leg['image_url'] = db_leg.image_url
+            leg['image_url'] = db_leg.congress_image_url
         return render(request, 'finder/zip_detail.html', {'legislators': legislators})

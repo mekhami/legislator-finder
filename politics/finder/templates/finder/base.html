@@ -8,12 +8,11 @@
     {% endblock %}
 </head>
 <body>
-    <div class="container">
+        {% include 'finder/header.html' %}
         {% block content %}
         {% endblock %}
 
         {% block footerjs %}
         {% endblock %}
-    </div>
 </body>
 </html>

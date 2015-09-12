@@ -1,5 +1,10 @@
 body {
     color: black;
+    margin: 0;
+}
+.navbar {
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 
 .legislator-card {
@@ -9,8 +14,6 @@ body {
     border: 1px solid black;
 
     .legi-picture {
-        min-height: 150px;
-        min-width: 150px;
         border: 1px solid black;
         background: yellow;
     }
@@ -27,17 +30,17 @@ body {
         input {
             text-align: center;
         }
+
+        button {
+            margin: 40px;
+            width: 180px;
+        }
     }
 }
 
 .zip-field {
     width: 100%;
     height: 50px;
-}
-
-h1 {
-    margin: 50px;
-    font-size: 60px;
 }
 
 ::-webkit-input-placeholder {
@@ -55,3 +58,31 @@ h1 {
 :-ms-input-placeholder {
     text-align: center;
 }
+
+.masthead {
+    h1 {
+        padding: 25px;
+        font-size: 60px;
+    }
+    color: #fff;
+    background: #1e5799; /* Old browsers */
+    background: -moz-linear-gradient(-45deg,  #1e5799 23%, #207cca 51%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(23%,#1e5799), color-stop(51%,#207cca)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(-45deg,  #1e5799 23%,#207cca 51%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(-45deg,  #1e5799 23%,#207cca 51%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(-45deg,  #1e5799 23%,#207cca 51%); /* IE10+ */
+    background: linear-gradient(135deg,  #1e5799 23%,#207cca 51%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#207cca',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+    margin-top: -20px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.about-text {
+    padding-top: 30px;
+    h1 {
+        border-bottom: 1px solid #eee;
+    }
+}
+
