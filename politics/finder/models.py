@@ -24,8 +24,8 @@ class Legislator(models.Model):
         return "{} {}".format(self.first_name, self.last_name)
 
 class Bill(models.Model):
-    title = models.CharField(max_length=255)
-    short_title = models.CharField(max_length=200, null=True)
+    title = models.TextField()
+    short_title = models.CharField(max_length=255, null=True)
     number = models.IntegerField()
     chamber = models.CharField(choices=CHAMBER_CHOICES, max_length=10)
     bill_type = models.CharField(max_length=255)
