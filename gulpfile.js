@@ -1,5 +1,5 @@
 var gulp = require('gulp'),
-    sass = require('gulp-ruby-sass'),
+    sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
     minifycss = require('gulp-minify-css'),
     jshint = require('gulp-jshint'),
@@ -17,11 +17,8 @@ var config = {
 }
 
 gulp.task('styles', function() {
-    return sass('politics/finder/static/scss/main.scss', { style: 'expanded' })
-        .pipe(autoprefixer('last 2 version'))
-        .pipe(gulp.dest(config.src_dir + '/css'))
-        .pipe(rename({suffix: '.min'}))
-        .pipe(minifycss())
+    gulp.src('politics/finder/static/scss/main.scss')
+        .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest(config.src_dir + '/css'))
         .pipe(notify({ message: 'Styles task complete' }));
     });
