@@ -58,6 +58,10 @@ gulp.task('default', ['clean'], function() {
     gulp.start('styles', 'scripts', 'images', 'bootstrap');
     });
 
+gulp.task('build', ['clean'], function() {
+    gulp.start('styles', 'scripts', 'images', 'bootstrap');
+    });
+
 gulp.task('watch', function() {
     gulp.watch('politics/*/static/**/*.scss', ['styles']);
     gulp.watch('politics/*/static/**/*.js', ['scripts']);
