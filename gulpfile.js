@@ -18,7 +18,7 @@ var config = {
 
 gulp.task('styles', function() {
     gulp.src('politics/finder/static/scss/main.scss')
-        .pipe(sass({{outputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(gulp.dest(config.src_dir + '/css'))
         .pipe(notify({ message: 'Styles task complete' }));
     });
