@@ -1,1 +1,1 @@
-web: python politics/manage.py runserver
+web: gunicorn politics.wsgi --chdir politics --log-file -
