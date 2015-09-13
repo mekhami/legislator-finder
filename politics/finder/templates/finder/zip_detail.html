@@ -10,13 +10,24 @@
         <div class="col-md-8 col-sm-12">
             <h1>{{ leg.first_name }} {{ leg.last_name }}</h1>
             <p>{{ leg.chamber|capfirst }} {{ leg.party|full_party }}</p>
+            <p>Phone Number: {{ leg.phone }}</p>
+            <p>Website: <a href="{{ leg.website }}">{{ leg.website }}</a></p>
             <p>DOB: {{ leg.birthday }}</p>
             <p>Twitter: <a href="http://www.twitter.com/{{ leg.twitter_id }}">{{ leg.twitter_id }}</a></p>
-            <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Votes</a>
-            <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Committees</a>
-            <div class="collapse" id="collapseExample">
+            <p><a class="btn btn-primary" role="button" data-toggle="collapse" href="#{{leg.last_name}}_votes_well" aria-expanded="false" aria-controls="collapseExample">Votes</a>
+            <a class="btn btn-primary" role="button" data-toggle="collapse" href="#{{leg.last_name}}_committees_well" aria-expanded="false" aria-controls="collapseExample">Committees</a></p>
+            <div class="collapse" id="{{leg.last_name}}_votes_well">
               <div class="well">
-                {% lorem %}  
+                {% for vote in leg.votes %}
+                    <p>{{ vote }}</p>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="collapse" id="{{leg.last_name}}_committees_well">
+              <div class="well">
+                  {% for com in leg.committees %}
+                    <p>{{ com.name }}</p>
+                  {% endfor %}
               </div>
             </div>
         </div>
